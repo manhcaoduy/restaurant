@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package item.v1;
+
+message Item {
+  string id = 1;
+
+  string name = 2;
+  int32 price = 3;
+  bool on_menu = 4;
+
+  string created_at = 50;
+  string updated_at = 51;
+}

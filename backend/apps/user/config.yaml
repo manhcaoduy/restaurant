@@ -1,0 +1,3 @@
+app:
+  httpPort: 30001
+  grpcPort: 50051

@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package customer.v1;
+
+import "customer/v1/dto.proto";
+
+service CustomerService {
+  rpc CreateCustomer(CreateCustomerRequest) returns (CreateCustomerResponse) {}
+  rpc UpdateCustomer(UpdateCustomerRequest) returns (UpdateCustomerResponse) {}
+  rpc FindCustomers(FindCustomersRequest) returns (FindCustomersResponse) {}
+}
+
+message CreateCustomerRequest {
+  string name = 1;
+  string phone = 2;
+}
+
+message CreateCustomerResponse {
+  Customer customer = 1;
+}
+
+message UpdateCustomerRequest {
+  string id = 1;
+  optional string name = 2;
+  optional string phone = 3;
+}
+
+message UpdateCustomerResponse {
+  Customer customer = 1;
+}
+
+message FindCustomersRequest {
+  optional string name = 1;
+  optional string phone = 2;
+}
+
+message FindCustomersResponse {
+  repeated Customer customers = 1;
+}

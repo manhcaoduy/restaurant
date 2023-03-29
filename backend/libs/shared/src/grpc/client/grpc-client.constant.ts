@@ -1,0 +1,1 @@
+export const GRPC_CLIENT_OPTION = 'GRPC_CLIENT_OPTION';

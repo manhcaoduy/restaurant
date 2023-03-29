@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package item.v1;
+
+import "item/v1/dto.proto";
+
+service ItemService {
+  rpc CreateItem(CreateItemRequest) returns (CreateItemResponse) {}
+  rpc UpdateItem(UpdateItemRequest) returns (UpdateItemResponse) {}
+
+  rpc FindItem(FindItemRequest) returns (FindItemResponse) {}
+  rpc GetItems(GetItemsRequest) returns (GetItemsResponse) {}
+
+  rpc DeleteItem(DeleteItemRequest) returns (DeleteItemResponse) {}
+}
+
+message CreateItemRequest {
+  string name = 1;
+  int32 price = 2;
+  bool on_menu = 3;
+}
+
+message CreateItemResponse {
+  Item item = 1;
+}
+
+message UpdateItemRequest {
+  string id = 1;
+  optional string name = 2;
+  optional int32 price = 3;
+  optional bool on_menu = 4;
+}
+
+message UpdateItemResponse {
+  Item item = 1;
+}
+
+message FindItemRequest {
+  oneof request {
+    string id = 1;
+    string keyword = 2;
+  }
+}
+
+message FindItemResponse {
+  Item item = 1;
+}
+
+message GetItemsRequest {
+  int32 page = 50;
+  int32 limit = 51;
+}
+
+message GetItemsResponse {
+  repeated Item items = 1;
+}
+
+message DeleteItemRequest {
+  string id = 1;
+}
+
+message DeleteItemResponse {
+  Item item = 1;
+}
