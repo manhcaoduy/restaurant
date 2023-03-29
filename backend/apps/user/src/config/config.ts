@@ -5,7 +5,10 @@ import * as process from 'process';
 import * as fs from 'fs';
 import * as yaml from 'js-yaml';
 
-const defaultConfigFiles = ['backend/apps/config.yaml', 'backend/apps/user/config.yaml'];
+const defaultConfigFiles = [
+  'backend/apps/config.yaml',
+  'backend/apps/user/config.yaml',
+];
 
 @Exclude()
 export class AppConfig {

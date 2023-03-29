@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { Transport } from '@nestjs/microservices';
 import { Config } from './config/config';
-import {ItemGrpcOptions} from "@backend/shared/grpc/services/grpc-service.option";
+import { ItemGrpcOptions } from '@backend/shared/grpc/services/grpc-service.option';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

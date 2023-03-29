@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { Transport } from '@nestjs/microservices';
 import { Config } from './config/config';
-import {UserGrpcOptions} from "@backend/shared/grpc/services/grpc-service.option";
+import { UserGrpcOptions } from '@backend/shared/grpc/services/grpc-service.option';
 
 // todo: add logger
 async function bootstrap() {
