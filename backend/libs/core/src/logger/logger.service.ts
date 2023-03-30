@@ -1,4 +1,4 @@
-import winston from "winston";
+import winston from 'winston';
 
 export class LoggerService {
   private logger: winston.Logger;
@@ -7,7 +7,7 @@ export class LoggerService {
   }
 
   debug(message: any) {
-    this.logger.debug(message)
+    this.logger.debug(message);
   }
 
   info(message: any) {

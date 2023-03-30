@@ -6,4 +6,4 @@ export const logLevels = {
   warn: 2,
   info: 3,
   debug: 4,
-}
+};

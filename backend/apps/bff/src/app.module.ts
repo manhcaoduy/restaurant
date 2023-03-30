@@ -3,8 +3,8 @@ import { ConfigModule } from './config/config.module';
 import { GrpcServiceProviderModule } from './grpc-service-provider/grpc-service-provider.module';
 import { CustomerModule } from './customer/customer.module';
 import { ItemModule } from './item/item.module';
-import {LoggerFactoryModule} from "@backend/core/logger/logger-factory.module";
-import {Config} from "./config/config";
+import { LoggerFactoryModule } from '@backend/core/logger/logger-factory.module';
+import { Config } from './config/config';
 
 @Module({
   imports: [
@@ -16,10 +16,10 @@ import {Config} from "./config/config";
       useFactory: (config: Config) => {
         return {
           logLevel: config.log.logLevel,
-        }
+        };
       },
       inject: [Config],
-    })
+    }),
   ],
 })
 export class AppModule {}

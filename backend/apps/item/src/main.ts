@@ -3,8 +3,8 @@ import { AppModule } from './app.module';
 import { Transport } from '@nestjs/microservices';
 import { Config } from './config/config';
 import { ItemGrpcOptions } from '@backend/shared/grpc/services/grpc-service.option';
-import {LoggerFactoryService} from "@backend/core/logger/logger-factory.service";
-import * as process from "process";
+import { LoggerFactoryService } from '@backend/core/logger/logger-factory.service';
+import * as process from 'process';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -28,7 +28,9 @@ async function bootstrap() {
     await app.startAllMicroservices();
     logger.info(`Item GRPC running on port ${grpcPort}`);
   } catch (err) {
-    logger.critical(`error when initialize grpc-service-provider microservice: ${err}`);
+    logger.critical(
+      `error when initialize grpc-service-provider microservice: ${err}`,
+    );
     process.exit(1);
   }
 
