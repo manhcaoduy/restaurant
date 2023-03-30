@@ -3,6 +3,8 @@ import { AppModule } from './app.module';
 import { Transport } from '@nestjs/microservices';
 import { Config } from './config/config';
 import { UserGrpcOptions } from '@backend/shared/grpc/services/grpc-service.option';
+import { LoggerFactoryService } from '@backend/core/logger/logger-factory.service';
+import * as process from 'process';
 
 // todo: add logger
 async function bootstrap() {
@@ -10,6 +12,8 @@ async function bootstrap() {
 
   await app.init();
 
+  const loggerFactoryService = await app.get(LoggerFactoryService);
+  const logger = loggerFactoryService.createLogger(AppModule.name);
   const config = await app.get(Config);
   const { grpcPort, httpPort } = config.app;
 
@@ -23,21 +27,22 @@ async function bootstrap() {
 
   try {
     await app.startAllMicroservices();
-    console.log(`User GRPC running on port ${grpcPort}`);
+    logger.info(`User GRPC running on port ${grpcPort}`);
   } catch (err) {
-    console.log(
-      'error when initialize grpc-service-provider microservice: ',
-      err,
+    logger.critical(
+      `error when initialize grpc-service-provider microservice: ${err}`,
     );
+    process.exit(1);
   }
 
   app
     .listen(httpPort)
     .then(() => {
-      console.log(`User running on port ${httpPort}`);
+      logger.info(`User running on port ${httpPort}`);
     })
     .catch((err) => {
-      console.log(`error whe run user service: ${err}`);
+      logger.critical(`error whe run user service: ${err}`);
+      process.exit(1);
     });
 }
 bootstrap();
