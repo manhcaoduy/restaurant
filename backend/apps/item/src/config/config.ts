@@ -4,6 +4,7 @@ import { Exclude, Expose } from 'class-transformer';
 import * as process from 'process';
 import * as fs from 'fs';
 import * as yaml from 'js-yaml';
+import {LoggerFactoryConfig} from "@backend/core/logger/logger-factory.config";
 
 const defaultConfigFiles = [
   'backend/apps/config.yaml',
@@ -31,6 +32,9 @@ export class Config {
 
   @IsDefined()
   app: AppConfig;
+
+  @IsDefined()
+  log: LoggerFactoryConfig;
 
   static load(): Config {
     if (this.config) {

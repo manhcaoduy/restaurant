@@ -6,3 +6,6 @@ grpc:
   userEndpoint: "localhost:50051"
   itemEndpoint: "localhost:50052"
   maxRetries: 2
+
+log:
+  logLevel: debug
